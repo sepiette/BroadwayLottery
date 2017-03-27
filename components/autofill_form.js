@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, TextInput, ScrollView, View} from 'react-native';
 
 export class AutofillForm extends Component {
   constructor(props) {
@@ -19,14 +19,12 @@ export class AutofillForm extends Component {
           <Text style={styles.header}> Broadway Direct Lottery </Text>
           <Text style={styles.text}> Hello {this.state.firstName} {this.state.lastName} </Text>
         </View>
-        <View style={styles.formContainer}>
+        <ScrollView style={styles.formContainer}>
            <TextInput style={styles.textInput} placeholder="First Name"
             onChangeText={(text) => this.setState({firstName: text})}/>
-        </View>
-        <View style={styles.formContainer}>
-           <TextInput style={styles.textInput} placeholder="Last Name"
+            <TextInput style={styles.textInput} placeholder="Last Name"
             onChangeText={(text) => this.setState({lastName: text})}/>
-        </View>
+        </ScrollView>
       </View>
       
       );
@@ -48,7 +46,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     margin: 10,
-    padding: 20
+    padding: 20,
+    borderBottomWidth: 5,
+    borderBottomColor: '#ccc'
   },
   text: {
     fontSize: 14,
@@ -65,9 +65,15 @@ const styles = StyleSheet.create({
 
   textInput: {
     color: '#000',
+    alignSelf: 'center',
+    width: 250,
+    height: 40,
+    paddingLeft: 20,
+    marginTop: 15,
     backgroundColor: '#fff',
-    height: 30,
-    padding: 20
+    borderColor: '#ccc',
+    borderRadius: 5,
+    borderWidth: 1
   }
 
 });
