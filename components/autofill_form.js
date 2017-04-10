@@ -11,20 +11,31 @@ export class AutofillForm extends Component {
       email: '',
       dob: '',
       ticketNum: '1',
+      country: '2',
       zipCode: ''
-    }
+    };
+    
+    this.saveData = this.saveData.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
+  saveData() {
+    AsyncStorage.setItem('autofill_data', JSON.stringify(this.state)).then(() => {
+      this.getData();
+    });
+  }
+
+  getData() {
+    AsyncStorage.getItem('autofill_data').then((data) => {
+        this.data = JSON.parse(data);
+    });
+  }
   render() {
     return (
       <View style ={styles.container}>
-        <View>
-          <Text style={styles.header}> Broadway Direct Lottery </Text>
-          <Text style={styles.text}> Hello {this.state.firstName} {this.state.lastName} </Text>
-        </View>
         <ScrollView style={styles.formContainer}>
-           <TextInput style={styles.textInput} placeholder="First Name"
-            onChangeText={(text) => this.setState({firstName: text})}/>
+           <TextInput style={styles.textInput} placeholder="First Name" 
+           onChangeText={(text) => this.setState({firstName: text})}/>
           <TextInput style={styles.textInput} placeholder="Last Name"
             onChangeText={(text) => this.setState({lastName: text})}/>
           <TextInput style={styles.textInput} placeholder="Email Address"
@@ -38,22 +49,16 @@ export class AutofillForm extends Component {
             <TextInput style={styles.date} placeholder="YYYY"
             onChangeText={(text) => this.setState({dob: text})}/>
           </View>
-
           <TextInput style={styles.textInput} placeholder="Number of Tickets"
             onChangeText={(text) => this.setState({ticketNum: text})}/>
           <TextInput style={styles.textInput} placeholder="Zip Code"
             onChangeText={(text) => this.setState({zipCode: text})}/>
-
             <View style={styles.submitButton}>
-              <Button color='#fff' onPress={this._saveAutofillData} title="Save Info" accessibilityLabel="Save autofill data" />
+              <Button color='#fff' onPress={this.saveData} title="Save Info" accessibilityLabel="Save autofill data" />
             </View>
         </ScrollView>
       </View>
     );
-
-    _saveAutofillData = async (values) => {
-
-    }
   }
 }
 
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
-    paddingTop:20
+    paddingTop:40
   },
   
   header: {
@@ -130,6 +135,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5
-  },
+  }
 
 });
