@@ -2,6 +2,6 @@
 A React-Native app for entering the NYC broadway lottery
 
 
-# To Run
+## To Run
 * npm install
 * react-native run-ios
