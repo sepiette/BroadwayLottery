@@ -6,7 +6,7 @@ export class LotteryWebView extends Component {
     return (
       <WebView
         source={{uri: 'https://lottery.broadwaydirect.com/'}}
-        style={{marginTop: 40}}
+        style={{paddingTop: 30}}
       />
     );
   }

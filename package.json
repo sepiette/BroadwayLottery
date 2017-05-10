@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "15.4.2",
     "react-native": "0.42.3",
-    "react-native-sqlite-storage": "^3.2.2"
+    "react-native-sqlite-storage": "^3.2.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

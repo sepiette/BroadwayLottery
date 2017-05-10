@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AutofillForm } from './autofill_form';
+import { Autofill } from './autofill';
 import { LotteryWebView } from './lottery_web_page';
 import {StyleSheet, Text, Button, View} from 'react-native';
 
@@ -20,7 +20,7 @@ export class WelcomeScreen extends Component {
   }
   render() {
     const nextRoute = {
-      component: AutofillForm,
+      component: Autofill,
       title: 'Autofill Preferences'
     };
     return (
